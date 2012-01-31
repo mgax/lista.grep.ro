@@ -10,16 +10,16 @@
 
 <h1>{{ site_title }}</h1>
 
-{% for article in articles %}
+{% for event in events %}
 <article>
 
   <header>
-    <h2>{{ article['title'] }}</h2>
-    <p><a href={{ article['url'] }}>{{ article['url'] }}</a></p>
-    <p>{{ article['date'] }}</p>
+    <h2>{{ event['title'] }}</h2>
+    <p><a href={{ event['url'] }}>{{ event['url'] }}</a></p>
+    <p>{{ event['date'] }}</p>
   </header>
 
-  {{ article['content'] }}
+  {{ event['content'] }}
 
 </article>
 {% endfor %}

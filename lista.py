@@ -7,11 +7,11 @@ app = flask.Flask(__name__)
 freezer = flask_frozen.Freezer(app)
 
 
-def load_articles(articles_dir_path):
-    articles = []
-    for article_path in articles_dir_path.listdir():
-        article_id = article_path.basename.rsplit('.', 1)[0]
-        with article_path.open('rb') as f:
+def load_events(events_dir_path):
+    events = []
+    for event_path in events_dir_path.listdir():
+        event_id = event_path.basename.rsplit('.', 1)[0]
+        with event_path.open('rb') as f:
             header = ""
             lines = (l.decode('utf-8') for l in f)
             for line in lines:
@@ -19,18 +19,18 @@ def load_articles(articles_dir_path):
                     break
                 header += line
             content = ''.join(lines)
-            articles.append(dict(yaml.load(header),
-                                 id=article_id,
+            events.append(dict(yaml.load(header),
+                                 id=event_id,
                                  content=content))
-    return articles
+    return events
 
 
-articles = load_articles(py.path.local(__file__).dirpath().join('articles'))
+events = load_events(py.path.local(__file__).dirpath().join('events'))
 
 
 @app.route('/')
 def homepage():
-    return flask.render_template('index.html', articles=articles)
+    return flask.render_template('index.html', events=events)
 
 
 if __name__ == '__main__':
