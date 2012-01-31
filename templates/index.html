@@ -13,7 +13,11 @@
 {% for article in articles %}
 <article>
 
-  <h2>{{ article['title'] }}</h2>
+  <header>
+    <h2>{{ article['title'] }}</h2>
+    <p><a href={{ article['url'] }}>{{ article['url'] }}</a></p>
+    <p>{{ article['date'] }}</p>
+  </header>
 
   {{ article['content'] }}
 
