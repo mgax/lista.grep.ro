@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+{% set site_title = "Lista hackerului social" %}
+<head>
+  <meta charset="utf-8">
+  <title>{{ site_title }}</title>
+</head>
+
+<body>
+
+<h1>{{ site_title }}</h1>
+
+{% for article in articles %}
+<article>
+
+  <h2>{{ article['title'] }}</h2>
+
+  {{ article['content'] }}
+
+</article>
+{% endfor %}
+
+</body>
+</html>

@@ -30,7 +30,7 @@ articles = load_articles(py.path.local(__file__).dirpath().join('articles'))
 
 @app.route('/')
 def homepage():
-    return 'hello world'
+    return flask.render_template('index.html', articles=articles)
 
 
 if __name__ == '__main__':
