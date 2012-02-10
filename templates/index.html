@@ -20,13 +20,9 @@
     {% for event in events %}
     <article class="span12">
 
-      <header>
-        <h2>{{ event['title'] }}</h2>
-        <p><a href={{ event['url'] }}>{{ event['url'] }}</a></p>
-        <p>{{ event['date'] }}</p>
-      </header>
-
-      {{ event['content'] }}
+      <h2>{{ event['title'] }}</h2>
+      <p><a href={{ event['url'] }}>{{ event['url'] }}</a></p>
+      <p>{{ event['date'] }}</p>
 
     </article>
     {% endfor %}
