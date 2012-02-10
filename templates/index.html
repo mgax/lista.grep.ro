@@ -4,25 +4,36 @@
 <head>
   <meta charset="utf-8">
   <title>{{ site_title }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-responsive.min.css') }}">
 </head>
 
 <body>
 
-<h1>{{ site_title }}</h1>
+<div class="container">
 
-{% for event in events %}
-<article>
+  <div class="hero-unit">
+    <h1>{{ site_title }}</h1>
+  </div>
 
-  <header>
-    <h2>{{ event['title'] }}</h2>
-    <p><a href={{ event['url'] }}>{{ event['url'] }}</a></p>
-    <p>{{ event['date'] }}</p>
-  </header>
+  <div class="row">
+    {% for event in events %}
+    <article class="span12">
 
-  {{ event['content'] }}
+      <header>
+        <h2>{{ event['title'] }}</h2>
+        <p><a href={{ event['url'] }}>{{ event['url'] }}</a></p>
+        <p>{{ event['date'] }}</p>
+      </header>
 
-</article>
-{% endfor %}
+      {{ event['content'] }}
+
+    </article>
+    {% endfor %}
+  </div>
+
+</div>
+
 
 </body>
 </html>
