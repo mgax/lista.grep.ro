@@ -32,8 +32,7 @@ def main():
     freezer.serve()
 
 
-if __name__ == '__main__':
-    import os.path
+def devel():
     from werkzeug.serving import run_with_reloader
     app.debug = True
     extra_files = [str(p) for p in
@@ -41,3 +40,7 @@ if __name__ == '__main__':
                    list(py.path.local(app.static_folder).visit()) +
                    list(events_folder.visit())]
     run_with_reloader(main, extra_files)
+
+
+if __name__ == '__main__':
+    devel()
