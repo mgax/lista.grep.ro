@@ -4,9 +4,10 @@ import flask
 import flask_frozen
 import flaskext.script
 
-app = flask.Flask(__name__)
+app = flask.Flask(__name__, instance_relative_config=True)
 freezer = flask_frozen.Freezer(app)
 manager = flaskext.script.Manager(app)
+app.config.from_pyfile('settings.py', silent=True)
 
 
 def load_events(events_dir_path):

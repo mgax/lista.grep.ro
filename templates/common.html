@@ -1,3 +1,18 @@
 {% macro link_css(filename) -%}
 <link rel="stylesheet" href="{{ url_for('static', filename=filename) }}">
 {%- endmacro %}
+
+{% macro script_src(filename) -%}
+<script src="{{ url_for('static', filename=filename) }}"></script>
+{%- endmacro %}
+
+{% macro google_analytics(code) -%}
+{% if code %}
+<script>
+  window._gaq = [['_setAccount','{{ code }}'],['_trackPageview'],['_trackPageLoadTime']];
+  Modernizr.load({
+    load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
+  });
+</script>
+{% endif %}
+{%- endmacro %}

@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
-{%- from 'common.html' import link_css %}
+{%- from 'common.html' import link_css, script_src, google_analytics %}
 {%- set site_title = "Lista hackerului social" %}
 <head>
   <meta charset="utf-8">
@@ -11,6 +11,8 @@
 </head>
 
 <body>
+
+{{ script_src('js/modernizr-2.0.6.min.js') }}
 
 <div class="container">
 
@@ -55,6 +57,8 @@
 {% if config['DEBUG'] %}
 <script src="http://livejs.com/live.js#css,html"></script>
 {% endif %}
+
+{{ google_analytics(config['GOOGLE_ANALYTICS_CODE']) }}
 
 </body>
 </html>
