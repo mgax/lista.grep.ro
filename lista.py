@@ -39,5 +39,9 @@ def main():
 
 
 if __name__ == '__main__':
+    import os.path
     from werkzeug.serving import run_with_reloader
-    run_with_reloader(main)
+    app.debug = True
+    extra_files = [os.path.join(app.template_folder, name) for name in
+                   [''] + os.listdir(app.template_folder)]
+    run_with_reloader(main, extra_files)
