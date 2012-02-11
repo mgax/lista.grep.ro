@@ -30,6 +30,11 @@ def homepage():
 
 
 @manager.command
+def build():
+    freezer.freeze()
+
+
+@manager.command
 def devel():
     from werkzeug.serving import run_with_reloader
     app.debug = True
