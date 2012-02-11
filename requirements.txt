@@ -4,3 +4,5 @@ Werkzeug==0.8.1
 Frozen-Flask==0.7
 py==1.4.6
 PyYAML==3.10
+Flask-Script==0.3.1
+argparse==1.2.1

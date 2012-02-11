@@ -2,9 +2,11 @@ import py.path
 import yaml
 import flask
 import flask_frozen
+import flaskext.script
 
 app = flask.Flask(__name__)
 freezer = flask_frozen.Freezer(app)
+manager = flaskext.script.Manager(app)
 
 
 def load_events(events_dir_path):
@@ -32,6 +34,7 @@ def main():
     freezer.serve()
 
 
+@manager.command
 def devel():
     from werkzeug.serving import run_with_reloader
     app.debug = True
@@ -43,4 +46,4 @@ def devel():
 
 
 if __name__ == '__main__':
-    devel()
+    manager.run()
