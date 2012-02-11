@@ -33,6 +33,11 @@ def homepage():
     return flask.render_template('index.html', events=events)
 
 
-if __name__ == '__main__':
+def main():
     freezer.freeze()
     freezer.serve()
+
+
+if __name__ == '__main__':
+    from werkzeug.serving import run_with_reloader
+    run_with_reloader(main)
