@@ -18,7 +18,8 @@ def load_events(events_dir_path):
     return events
 
 
-events = load_events(py.path.local(__file__).dirpath().join('events'))
+events_folder = py.path.local(__file__).dirpath().join('events')
+events = load_events(events_folder)
 
 
 @app.route('/')
@@ -37,5 +38,6 @@ if __name__ == '__main__':
     app.debug = True
     extra_files = [str(p) for p in
                    list(py.path.local(app.template_folder).visit()) +
-                   list(py.path.local(app.static_folder).visit())]
+                   list(py.path.local(app.static_folder).visit()) +
+                   list(events_folder.visit())]
     run_with_reloader(main, extra_files)
