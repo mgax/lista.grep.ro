@@ -1,0 +1,22 @@
+.event {
+    margin-bottom: 30px;
+}
+
+.event .date {
+    text-align: right;
+    padding-top: 7px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.event .date .day {
+    color: #e33;
+}
+
+.event .date .year {
+    color: #999;
+}
+
+.event p {
+    font-size: 16px;
+}

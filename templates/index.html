@@ -7,6 +7,7 @@
   <title>{{ site_title }}</title>
   {{ link_css('css/bootstrap.min.css') }}
   {{ link_css('css/bootstrap-responsive.min.css') }}
+  {{ link_css('css/lista.css') }}
 </head>
 
 <body>
@@ -19,11 +20,31 @@
 
   <div class="row">
     {% for event in events %}
-    <article class="span12">
+    <article class="event span12">
 
-      <h2>{{ event['title'] }}</h2>
-      <p><a href={{ event['url'] }}>{{ event['url'] }}</a></p>
-      <p>{{ event['date'] }}</p>
+      <div class="row">
+
+        <div class="date span3">
+          <time>
+            <span class="day">{{ event['date'].strftime('%d %b') }}</span>
+            <span class="year">{{ event['date'].strftime('%Y') }}</span>
+            {#- no whitespace here -#}
+          </time>
+        </div>
+
+        <div class="span9">
+
+          <h2>
+            <span class="title">{{ event['title'] }}</span>
+          </h2>
+
+          <p>
+            <a href={{ event['url'] }}>{{ event['url'] }}</a>
+          </p>
+
+        </div>
+
+      </div>
 
     </article>
     {% endfor %}
