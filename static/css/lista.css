@@ -1,10 +1,15 @@
+@media (min-width: 768px) {
+    .event .date {
+        padding-top: 7px;
+        text-align: right;
+    }
+}
+
 .event {
     margin-bottom: 30px;
 }
 
 .event .date {
-    text-align: right;
-    padding-top: 7px;
     font-size: 30px;
     font-weight: bold;
 }
