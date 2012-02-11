@@ -29,11 +29,6 @@ def homepage():
     return flask.render_template('index.html', events=events)
 
 
-def main():
-    freezer.freeze()
-    freezer.serve()
-
-
 @manager.command
 def devel():
     from werkzeug.serving import run_with_reloader
@@ -42,7 +37,12 @@ def devel():
                    list(py.path.local(app.template_folder).visit()) +
                    list(py.path.local(app.static_folder).visit()) +
                    list(events_folder.visit())]
-    run_with_reloader(main, extra_files)
+
+    def iterate():
+        freezer.freeze()
+        freezer.serve()
+
+    run_with_reloader(iterate, extra_files)
 
 
 if __name__ == '__main__':
