@@ -8,7 +8,7 @@ import flaskext.script
 from werkzeug.contrib.atom import AtomFeed
 
 
-app = flask.Flask(__name__, instance_relative_config=True)
+app = flask.Flask(__name__)
 freezer = flask_frozen.Freezer(app)
 manager = flaskext.script.Manager(app)
 app.config.from_pyfile('settings.py', silent=True)
