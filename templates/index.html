@@ -8,6 +8,10 @@
   {{ link_css('css/bootstrap.min.css') }}
   {{ link_css('css/bootstrap-responsive.min.css') }}
   {{ link_css('css/lista.css') }}
+  <link rel="alternate"
+        title="Lista hackerului social"
+        type="application/atom+xml"
+        href="{{ url_for('recent_atom') }}">
 </head>
 
 <body>

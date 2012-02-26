@@ -37,7 +37,7 @@ def homepage():
 
 
 @app.route('/recent.atom')
-def recent_feed():
+def recent_atom():
     site_url = 'http://lista.grep.ro/'
     feed = AtomFeed("Lista hackerului social",
                     feed_url=urlparse.urljoin(site_url, flask.request.path),
