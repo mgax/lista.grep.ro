@@ -1,3 +1,4 @@
+import operator
 import py.path
 import yaml
 import flask
@@ -18,6 +19,7 @@ def load_events(events_dir_path):
             event_data = yaml.load(f)
             event_data['id'] = event_id
             events.append(event_data)
+    events.sort(key=operator.itemgetter('date'), reverse=True)
     return events
 
 
