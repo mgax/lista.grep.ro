@@ -1,13 +1,8 @@
-<time>
-  <span class="day">{{ event['date'].strftime('%d %b') }}</span>
-  <span class="year">{{ event['date'].strftime('%Y') }}</span>
-  {#- no whitespace here -#}
-</time>
-
-<h2>
-  <span class="title">{{ event['title'] }}</span>
-</h2>
-
 <p>
+  <time>{{ event['date'].strftime('%d %b %Y') }}</time>:
+  {{ event['title'] }}
+<p>
+
+</p>
   <a href={{ event['url'] }}>{{ event['url'] }}</a>
 </p>
