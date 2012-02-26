@@ -11,7 +11,7 @@
   <link rel="alternate"
         title="Lista hackerului social"
         type="application/atom+xml"
-        href="{{ url_for('recent_atom') }}">
+        href="{{ config['FEEDBURNER_FEED_URL'] }}">
 </head>
 
 <body>
@@ -55,6 +55,14 @@
     </article>
     {% endfor %}
   </div>
+
+  <hr>
+
+  <footer>
+    <p class="pull-right">
+      <a href="{{ config['FEEDBURNER_MAIL_URL'] }}">Notificări prin e-mail</a>
+    </p>
+  </footer>
 
 </div>
 

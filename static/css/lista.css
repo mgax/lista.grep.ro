@@ -5,6 +5,10 @@
     }
 }
 
+body {
+    padding-bottom: 40px;
+}
+
 .event {
     margin-bottom: 30px;
 }
