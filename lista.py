@@ -39,13 +39,16 @@ def homepage():
 @app.route('/recent.atom')
 def recent_atom():
     site_url = 'http://lista.grep.ro/'
+    tmpl = flask.current_app.jinja_env.get_template('feed_item.html')
     feed = AtomFeed("Lista hackerului social",
                     feed_url=urlparse.urljoin(site_url, flask.request.path),
                     url=site_url)
 
     ordered_events = sorted(events, key=operator.itemgetter('change-date'))
     for event in reversed(ordered_events[-20:]):
-        feed.add(event['title'],
+        feed.add(u"%s (%s)" % (event['title'],
+                               event['date'].strftime('%d %b')),
+                 unicode(tmpl.render(event=event)),
                  url=event['url'],
                  updated=event['change-date'],
                  published=event['post-date'],
