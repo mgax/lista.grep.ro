@@ -33,6 +33,12 @@ events_folder = py.path.local(__file__).dirpath().join('events')
 events = load_events(events_folder)
 
 
+@app.before_request
+def load_events_before_request():
+    global events
+    events = load_events(events_folder)
+
+
 @app.route('/')
 def homepage():
     return flask.render_template('index.html', events=events)
