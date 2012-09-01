@@ -2,24 +2,24 @@
 
 import operator
 import urlparse
-import py.path
+from path import path
 import yaml
 import flask
-import flask_frozen
-import flaskext.script
+from flask.ext.frozen import Freezer
+from flask.ext.script import Manager
 from werkzeug.contrib.atom import AtomFeed
 
 
 app = flask.Flask(__name__)
-freezer = flask_frozen.Freezer(app)
-manager = flaskext.script.Manager(app)
+freezer = Freezer(app)
+manager = Manager(app)
 app.config.from_pyfile('settings.py', silent=True)
 
 
 def load_events(events_dir_path):
     events = []
     for event_path in events_dir_path.listdir():
-        event_id = event_path.basename.rsplit('.', 1)[0]
+        event_id = event_path.name.rsplit('.', 1)[0]
         with event_path.open('rb') as f:
             event_data = yaml.load(f)
             event_data['id'] = event_id
@@ -29,7 +29,7 @@ def load_events(events_dir_path):
     return events
 
 
-events_folder = py.path.local(__file__).dirpath().join('events')
+events_folder = path(__file__).parent / 'events'
 events = load_events(events_folder)
 
 
@@ -67,22 +67,6 @@ def recent_atom():
 @manager.command
 def build():
     freezer.freeze()
-
-
-@manager.command
-def devel():
-    from werkzeug.serving import run_with_reloader
-    app.debug = True
-    extra_files = [str(p) for p in
-                   list(py.path.local(app.template_folder).visit()) +
-                   list(py.path.local(app.static_folder).visit()) +
-                   list(events_folder.visit())]
-
-    def iterate():
-        freezer.freeze()
-        freezer.serve()
-
-    run_with_reloader(iterate, extra_files)
 
 
 if __name__ == '__main__':
