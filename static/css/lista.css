@@ -26,6 +26,12 @@ body {
     color: #999;
 }
 
+.event.past h2,
+.event.past a,
+.event.past .date .day {
+    color: #999;
+}
+
 .event p {
     font-size: 16px;
     word-wrap: break-word;

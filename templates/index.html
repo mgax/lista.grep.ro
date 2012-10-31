@@ -17,6 +17,18 @@
 <body>
 
 {{ script_src('js/modernizr-2.0.6.min.js') }}
+{{ script_src('js/jquery-1.7.2.min.js') }}
+<script>
+var App = {};
+App.set_date_color = function(dom_id) {
+    var today = (new Date()).toISOString().substr(0, 10);
+    var article = $('#' + dom_id);
+    var time = article.find('time');
+    if(time.attr('datetime') < today) {
+        article.addClass('past');
+    }
+};
+</script>
 
 <div class="container">
 
@@ -26,12 +38,13 @@
 
   <div class="row">
     {% for event in events %}
-    <article class="event span12">
+    {% set dom_id = "event-" + event['id'] %}
+    <article class="event span12" id="{{ dom_id }}">
 
       <div class="row">
 
         <div class="date span4">
-          <time>
+          <time datetime="{{ event['date'].strftime('%Y-%m-%d') }}">
             <span class="day">{{ event['date'].strftime('%d %b') }}</span>
             <span class="year">{{ event['date'].strftime('%Y') }}</span>
             {#- no whitespace here -#}
@@ -53,6 +66,7 @@
       </div>
 
     </article>
+    <script>App.set_date_color({{ dom_id|tojson|safe }});</script>
     {% endfor %}
   </div>
 
