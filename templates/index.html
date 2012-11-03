@@ -2,8 +2,10 @@
 <html>
 {%- from 'common.html' import link_css, script_src, google_analytics %}
 {%- set site_title = "Lista hackerului social" %}
+{%- set feed_url = url_for('feed_atom') %}
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ site_title }}</title>
   {{ link_css('css/bootstrap.min.css') }}
   {{ link_css('css/bootstrap-responsive.min.css') }}
@@ -11,7 +13,7 @@
   <link rel="alternate"
         title="Lista hackerului social"
         type="application/atom+xml"
-        href="{{ url_for('feed_atom') }}">
+        href="{{ feed_url }}">
 </head>
 
 <body>
@@ -34,6 +36,28 @@ App.set_date_color = function(dom_id) {
 
   <div class="hero-unit">
     <h1>{{ site_title }}</h1>
+    <p class="pull-right">
+      Notificări:
+      <a class="btn btn-success" href="{{ config['FEEDBURNER_MAIL_URL'] }}">
+        <i class="icon-envelope icon-white"></i> email
+      </a>
+      <a class="btn btn-warning" href="{{ feed_url }}">
+        <i class="icon-bullhorn icon-white"></i> rss
+      </a>
+    </p>
+    <p class="pull-right">
+      <a class="twitter" href="http://twitter.com/mgax">@mgax</a>
+      <a class="btn contact-button">
+        <i class="icon-pencil"></i> contact
+      </a>
+    </p>
+    <script>
+      (function() {
+        var bi = ['gr', 'le', 'ep.', 'ro', 'a', 'x@'];
+        var addr = bi[4] + bi[1] + bi[5] + bi[0] + bi[2] +  bi[3];
+        $('.contact-button').attr('href', 'mailto:' + addr);
+      })();
+    </script>
   </div>
 
   <div class="row">
@@ -73,9 +97,6 @@ App.set_date_color = function(dom_id) {
   <hr>
 
   <footer>
-    <p class="pull-right">
-      <a href="{{ config['FEEDBURNER_MAIL_URL'] }}">Notificări prin e-mail</a>
-    </p>
   </footer>
 
 </div>

@@ -1,12 +1,22 @@
-@media (min-width: 768px) {
-    .event .date {
-        padding-top: 7px;
-        text-align: right;
-    }
-}
-
 body {
     padding-bottom: 40px;
+}
+
+.hero-unit {
+    overflow: hidden;
+    padding: 20px;
+}
+
+.hero-unit h1 {
+    font-size: 40px;
+}
+
+.hero-unit p {
+    margin-left: 10px;
+}
+
+.hero-unit .twitter {
+    color: #333;
 }
 
 .event {
@@ -35,4 +45,23 @@ body {
 .event p {
     font-size: 16px;
     word-wrap: break-word;
+}
+
+@media (min-width: 768px) {
+    .event .date {
+        padding-top: 7px;
+        text-align: right;
+    }
+
+    .hero-unit {
+        padding: 60px 60px 20px;
+    }
+
+    .hero-unit h1 {
+        font-size: 60px;
+    }
+
+    .hero-unit p {
+        margin: 15px 20px;
+    }
 }
