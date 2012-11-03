@@ -64,6 +64,12 @@ def recent_atom():
     return feed.get_response()
 
 
+@app.route('/feed.atom')
+def feed_atom():
+    """ New feed. At some point we'll deprecate the one used by feedburner. """
+    return recent_atom()
+
+
 @manager.command
 def build():
     freezer.freeze()
