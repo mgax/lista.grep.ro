@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import operator
+from datetime import datetime
 import urlparse
 from path import path
 import yaml
@@ -54,9 +55,14 @@ def recent_atom():
 
     ordered_events = sorted(events, key=operator.itemgetter('change-date'))
     for event in reversed(ordered_events[-20:]):
+        if event['post-date'] < datetime(2012, 11, 23):
+            item_id = event['url']
+        else:
+            item_id = '{site_url}entry/{event[id]}'.format(**locals())
         feed.add(u"%s (%s)" % (event['title'],
                                event['date'].strftime('%d %b')),
                  unicode(tmpl.render(event=event)),
+                 id=item_id,
                  url=event['url'],
                  updated=event['change-date'],
                  published=event['post-date'],
