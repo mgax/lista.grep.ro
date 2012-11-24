@@ -101,7 +101,9 @@ App.set_date_color = function(dom_id) {
 
 </div>
 
-{{ google_analytics(config['GOOGLE_ANALYTICS_CODE']) }}
+{% if not config['DEBUG'] %}
+  {{ google_analytics(config['GOOGLE_ANALYTICS_CODE']) }}
+{% endif %}
 
 </body>
 </html>
