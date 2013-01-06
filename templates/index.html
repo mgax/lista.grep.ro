@@ -34,31 +34,7 @@ App.set_date_color = function(dom_id) {
 
 <div class="container">
 
-  <div class="hero-unit">
-    <h1>{{ site_title }}</h1>
-    <p class="pull-right">
-      Notificări:
-      <a class="btn btn-success" href="{{ config['FEEDBURNER_MAIL_URL'] }}">
-        <i class="icon-envelope icon-white"></i> email
-      </a>
-      <a class="btn btn-warning" href="{{ feed_url }}">
-        <i class="icon-bullhorn icon-white"></i> rss
-      </a>
-    </p>
-    <p class="pull-right">
-      <a class="twitter" href="http://twitter.com/mgax">@mgax</a>
-      <a class="btn contact-button">
-        <i class="icon-pencil"></i> contact
-      </a>
-    </p>
-    <script>
-      (function() {
-        var bi = ['gr', 'le', 'ep.', 'ro', 'a', 'x@'];
-        var addr = bi[4] + bi[1] + bi[5] + bi[0] + bi[2] +  bi[3];
-        $('.contact-button').attr('href', 'mailto:' + addr);
-      })();
-    </script>
-  </div>
+  {% include "hero.html" %}
 
   <div class="row">
     {% for event in events %}
