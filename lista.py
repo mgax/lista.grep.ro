@@ -40,6 +40,13 @@ def load_events_before_request():
     events = load_events(events_folder)
 
 
+@app.context_processor
+def inject_template_globals():
+    return {
+        'site_title': "Lista hackerului social",
+    }
+
+
 @app.route('/')
 def homepage():
     return flask.render_template('index.html', events=events)

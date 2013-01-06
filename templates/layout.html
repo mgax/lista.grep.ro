@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+{%- from 'common.html' import link_css, script_src, google_analytics %}
+{%- set feed_url = url_for('feed_atom') %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ site_title }}</title>
+  {{ link_css('css/bootstrap.min.css') }}
+  {{ link_css('css/bootstrap-responsive.min.css') }}
+  {{ link_css('css/lista.css') }}
+  <link rel="alternate"
+        title="{{ site_title }}"
+        type="application/atom+xml"
+        href="{{ feed_url }}">
+</head>
+
+<body>
+
+{{ script_src('js/modernizr-2.0.6.min.js') }}
+{{ script_src('js/jquery-1.7.2.min.js') }}
+
+<div class="container">
+
+  {% block content %}{% endblock %}
+
+  <hr>
+
+  <footer>
+  </footer>
+
+</div>
+
+{% if not config['DEBUG'] %}
+  {{ google_analytics(config['GOOGLE_ANALYTICS_CODE']) }}
+{% endif %}
+
+</body>
+</html>
