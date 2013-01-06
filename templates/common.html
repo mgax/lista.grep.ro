@@ -1,5 +1,5 @@
-{% macro link_css(filename) -%}
-<link rel="stylesheet" href="{{ url_for('static', filename=filename) }}">
+{% macro link_css(filename, q='') -%}
+<link rel="stylesheet" href="{{ url_for('static', filename=filename) + q }}">
 {%- endmacro %}
 
 {% macro script_src(filename) -%}
