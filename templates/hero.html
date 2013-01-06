@@ -3,6 +3,11 @@
   <h1>{{ site_title }}</h1>
 
   <p class="pull-right">
+    <a class="btn btn-info"
+       href="{{ url_for('communities') }}">Comunități locale</a>
+  </p>
+
+  <p class="pull-right">
     Notificări:
     <span class="btn-group">
       <a class="btn btn-success" href="{{ config['FEEDBURNER_MAIL_URL'] }}">

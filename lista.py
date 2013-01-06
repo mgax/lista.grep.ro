@@ -45,6 +45,11 @@ def homepage():
     return flask.render_template('index.html', events=events)
 
 
+@app.route('/communities.html')
+def communities():
+    return ':)'
+
+
 @app.route('/recent.atom')
 def recent_atom():
     site_url = 'http://lista.grep.ro/'
