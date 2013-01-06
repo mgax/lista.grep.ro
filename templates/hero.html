@@ -1,0 +1,48 @@
+{% from 'common.html' import active_for_page with context %}
+
+<div class="hero-unit">
+
+  <p class="pull-right header-item header-subscribe">
+    Notificări:
+    <span class="btn-group">
+      <a class="btn btn-success" href="{{ config['FEEDBURNER_MAIL_URL'] }}">
+        <i class="icon-envelope icon-white"></i> email
+      </a>
+      <a class="btn btn-warning" href="{{ feed_url }}">
+        <i class="icon-bullhorn icon-white"></i> rss
+      </a>
+    </span>
+  </p>
+
+  <p class="pull-right header-item header-contact">
+    <span class="btn-group">
+      <a class="btn twitter" href="http://twitter.com/mgax">@mgax</a>
+      <a class="btn contact-button">
+        <i class="icon-pencil"></i> contact
+      </a>
+    </span>
+  </p>
+
+  <h1>{{ site_title }}</h1>
+
+  <ul class="nav nav-pills pull-left header-item header-pages">
+
+    <li class="{{ active_for_page('homepage') }}">
+      <a href="{{ url_for('homepage') }}">Evenimente</a>
+    </li>
+
+    <li class="{{ active_for_page('communities') }}">
+      <a href="{{ url_for('communities') }}">Comunități locale</a>
+    </li>
+
+  </ul>
+
+</div>
+
+<script>
+  (function() {
+    var bi = ['gr', 'le', 'ep.', 'ro', 'a', 'x@'];
+    var addr = bi[4] + bi[1] + bi[5] + bi[0] + bi[2] +  bi[3];
+    $('.contact-button').attr('href', 'mailto:' + addr);
+  })();
+</script>

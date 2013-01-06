@@ -16,3 +16,7 @@
 </script>
 {% endif %}
 {%- endmacro %}
+
+{% macro active_for_page(name) -%}
+  {% if request.url_rule.endpoint == name %}active{% endif %}
+{%- endmacro %}
