@@ -54,7 +54,7 @@ def homepage():
 
 @app.route('/communities.html')
 def communities():
-    return ':)'
+    return flask.render_template('communities.html')
 
 
 @app.route('/recent.atom')
