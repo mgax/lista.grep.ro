@@ -4,19 +4,25 @@ body {
 
 .hero-unit {
     overflow: hidden;
-    padding: 20px;
+    padding: 0 20px;
 }
 
 .hero-unit h1 {
-    font-size: 40px;
+    font-size: 30px;
+    clear: right;
 }
 
-.hero-unit p {
+.header-item {
     margin-left: 10px;
 }
 
 .hero-unit .twitter {
     color: #333;
+}
+
+.header-contact,
+.header-subscribe {
+    display: none;
 }
 
 .event {
@@ -54,14 +60,19 @@ body {
     }
 
     .hero-unit {
-        padding: 60px 60px 20px;
+        padding: 0 20px;
     }
 
     .hero-unit h1 {
         font-size: 60px;
     }
 
-    .hero-unit p {
-        margin: 15px 20px;
+    .header-item {
+        margin: 10px 15px;
+    }
+
+    .header-contact,
+    .header-subscribe {
+        display: block;
     }
 }

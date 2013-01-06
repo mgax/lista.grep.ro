@@ -1,13 +1,8 @@
+{% from 'common.html' import active_for_page with context %}
+
 <div class="hero-unit">
 
-  <h1>{{ site_title }}</h1>
-
-  <p class="pull-right">
-    <a class="btn btn-info"
-       href="{{ url_for('communities') }}">Comunități locale</a>
-  </p>
-
-  <p class="pull-right">
+  <p class="pull-right header-item header-subscribe">
     Notificări:
     <span class="btn-group">
       <a class="btn btn-success" href="{{ config['FEEDBURNER_MAIL_URL'] }}">
@@ -19,7 +14,7 @@
     </span>
   </p>
 
-  <p class="pull-right">
+  <p class="pull-right header-item header-contact">
     <span class="btn-group">
       <a class="btn twitter" href="http://twitter.com/mgax">@mgax</a>
       <a class="btn contact-button">
@@ -27,6 +22,20 @@
       </a>
     </span>
   </p>
+
+  <h1>{{ site_title }}</h1>
+
+  <ul class="nav nav-pills pull-left header-item header-pages">
+
+    <li class="{{ active_for_page('homepage') }}">
+      <a href="{{ url_for('homepage') }}">Evenimente</a>
+    </li>
+
+    <li class="{{ active_for_page('communities') }}">
+      <a href="{{ url_for('communities') }}">Comunități locale</a>
+    </li>
+
+  </ul>
 
 </div>
 
