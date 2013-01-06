@@ -2,18 +2,22 @@
   <h1>{{ site_title }}</h1>
   <p class="pull-right">
     Notificări:
-    <a class="btn btn-success" href="{{ config['FEEDBURNER_MAIL_URL'] }}">
-      <i class="icon-envelope icon-white"></i> email
-    </a>
-    <a class="btn btn-warning" href="{{ feed_url }}">
-      <i class="icon-bullhorn icon-white"></i> rss
-    </a>
+    <span class="btn-group">
+      <a class="btn btn-success" href="{{ config['FEEDBURNER_MAIL_URL'] }}">
+        <i class="icon-envelope icon-white"></i> email
+      </a>
+      <a class="btn btn-warning" href="{{ feed_url }}">
+        <i class="icon-bullhorn icon-white"></i> rss
+      </a>
+    </span>
   </p>
   <p class="pull-right">
-    <a class="twitter" href="http://twitter.com/mgax">@mgax</a>
-    <a class="btn contact-button">
-      <i class="icon-pencil"></i> contact
-    </a>
+    <span class="btn-group">
+      <a class="btn twitter" href="http://twitter.com/mgax">@mgax</a>
+      <a class="btn contact-button">
+        <i class="icon-pencil"></i> contact
+      </a>
+    </span>
   </p>
   <script>
     (function() {
