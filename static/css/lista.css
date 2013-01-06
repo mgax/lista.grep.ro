@@ -12,8 +12,12 @@ body {
     clear: right;
 }
 
-.header-item {
+.hero-unit p {
     margin-left: 10px;
+}
+
+.header-pages {
+    font-size: 15px;
 }
 
 .hero-unit .twitter {
@@ -71,8 +75,12 @@ footer {
         font-size: 60px;
     }
 
-    .header-item {
+    .hero-unit p {
         margin: 10px 15px;
+    }
+
+    .header-pages {
+        font-size: 18px;
     }
 
     .header-contact,
