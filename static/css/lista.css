@@ -53,6 +53,10 @@ body {
     word-wrap: break-word;
 }
 
+footer {
+    color: #888;
+}
+
 @media (min-width: 768px) {
     .event .date {
         padding-top: 7px;
