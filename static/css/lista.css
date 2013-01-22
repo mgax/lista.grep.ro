@@ -63,7 +63,7 @@ footer {
 
 @media (min-width: 768px) {
     .event .date {
-        padding-top: 7px;
+        padding-top: 21px;
         text-align: right;
     }
 
