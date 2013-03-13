@@ -59,6 +59,25 @@ def communities():
 
 @app.route('/recent.atom')
 def recent_atom():
+    """ Deprecated feedburner feed """
+    site_url = 'http://lista.grep.ro/'
+    feed = AtomFeed("Lista hackerului social (feed vechi)",
+                    feed_url=urlparse.urljoin(site_url, flask.request.path),
+                    url=site_url)
+
+    event_date = datetime(2013, 3, 14)
+    feed.add(u"Feed nou",
+             flask.render_template('old_feed.html'),
+             id='{site_url}entry/2013-03-14-feed-nou'.format(**locals()),
+             url=site_url,
+             updated=event_date,
+             published=event_date,
+             author="Alex Morega")
+    return feed.get_response()
+
+
+@app.route('/feed.atom')
+def feed_atom():
     site_url = 'http://lista.grep.ro/'
     tmpl = flask.current_app.jinja_env.get_template('feed_item.html')
     feed = AtomFeed("Lista hackerului social",
@@ -80,12 +99,6 @@ def recent_atom():
                  published=event['post-date'],
                  author="Alex Morega")
     return feed.get_response()
-
-
-@app.route('/feed.atom')
-def feed_atom():
-    """ New feed. At some point we'll deprecate the one used by feedburner. """
-    return recent_atom()
 
 
 @manager.command
